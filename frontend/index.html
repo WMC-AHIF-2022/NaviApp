@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>NaviApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          crossorigin=""/>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
 </head>
 <body>
-$END$
+    <div id="map"></div>
+    <div id="routeInput" class="panel">
+        <input id="originInput" placeholder="departure" type="text">
+        <input id="targetInput" placeholder="destination" type="text">
+        <button onclick="calculateRoute()">Show Route</button>
+    </div>
+    <div id="loadingPanel" class="panel">
+        <img style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100px;" src="media/magnify.gif">
+    </div>
+    <div id="routePreview" class="panel">
+        <p id="routePreview_routeInformation">1h58m 177km</p>
+        <button onclick="startActiveNavigation(currentRouteDetails)">Start Route</button>
+    </div>
+
+    <div id="navigationPanel" class="panel">
+        <div id="nextNavigationStep">
+            <p id="nextNavigationStepIcon">--</p>
+            <p id="nextNavigationStepText"></p>
+        </div>
+    </div>
+
+    <div id="targetReachedPanel" class="panel">
+        Arrived at destination.
+        <button onclick="window.location.reload()">Another route</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="addressSearch.js"></script>
+    <script src="activeNavigation.js"></script>
+
+    <!-- TODO ATTRIBUTE LOADING.IO "The icon "Magnify" is provided by loading.io" -->
 </body>
 </html>
